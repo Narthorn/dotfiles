@@ -1,0 +1,21 @@
+#ncmpcpp config - Vim last updated 22/09/2015
+
+mpd_music_dir = "~/music"
+song_list_format = "{$3%4l$9 }{$7%a$9 - }{%t}|{$8%f$9}$R{$5%b }$9"
+song_columns_list_format = "(7)[green]{l} (20)[cyan]{a} (30)[]{t} (23)[red]{b}"
+
+message_delay_time = "3"
+
+user_interface = "alternative"
+playlist_display_mode = "classic"
+playlist_separate_albums = "yes"
+
+autocenter_mode = "yes"
+centered_cursor = "yes"
+follow_now_playing_lyrics = "yes"
+locked_screen_width_part = "60"
+display_bitrate = "yes"
+
+ask_before_clearing_playlists = "no"
+external_editor = "vim"
+use_console_editor = "yes"
