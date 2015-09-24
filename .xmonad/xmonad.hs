@@ -50,7 +50,7 @@ conf = defaultConfig {
                             , ((modMask,               xK_c), spawn "chromium")
                             , ((modMask,               xK_e), spawn "spacefm")
                             , ((modMask,               xK_p), spawn "pavucontrol")
-							, ((modMask .|. shiftMask, xK_p), spawn "pactl set-card-profile bluez_card.90_03_B7_5F_3E_46 off; pactl set-card-profile bluez_card.90_03_B7_5F_3E_46 a2dp")
+							, ((modMask .|. shiftMask, xK_p), spawn "pactl set-card-profile alsa_card.usb-Native_Instruments_RigKontrol3_SN-ydag0t9x-00 off; pactl set-card-profile alsa_card.usb-Native_Instruments_RigKontrol3_SN-ydag0t9x-00 output:analog-stereo")
 
                             , ((modMask .|. mod1Mask,     xK_Print), screenshot 3 True)
                             , ((modMask .|. controlMask,  xK_Print), spawn "import png:- | xclip -selection clipboard") -- Copy screenshot to clipboard in select mode.
