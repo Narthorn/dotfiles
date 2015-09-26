@@ -4,7 +4,7 @@ Config {
     font = "xft:Fixed-8",
     bgColor = "#000000",
     fgColor = "#ffffff",
-    position = Static { xpos = 0, ypos = 0, width = 1800, height = 16 },
+    position = Static { xpos = 1680, ypos = 0, width = 1800, height = 16 },
 	lowerOnStart = True,
     commands = [
         Run MPD              ["-t","<fc=#FFFFCC><statei></fc> <state>: <fc=#CEFFAC><artist> - <title> (<length>)</fc> <fc=#FFFFCC><bar></fc> [<flags>]", "-W", "25", "-b", "-", "-f", "#"] 10, 
