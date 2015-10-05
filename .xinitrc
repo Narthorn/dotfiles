@@ -43,11 +43,5 @@ pulseaudio --start
 
 #pavucontrol &
 
-# Music !
-mpd &
-
-# Mails !
-thunderbird &
-
 # haskell is good for you
 exec xmonad
