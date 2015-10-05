@@ -23,5 +23,5 @@ Config {
     ],
     sepChar = "%",
     alignSep = "}{",
-    template = "%StdinReader% }{%autompd% %mpd%       Gpu: <fc=#CEFFAC>%gputemp%</fc>  %multicpu%   %memory%   %swap%   %enp3s0%   Keys: <fc=#CEFFAC>%kbd%</fc>   <fc=#FFFFCC>%date%</fc>"
+    template = "%StdinReader% }{ %autompd% %mpd%       Gpu: <fc=#CEFFAC>%gputemp%</fc>  %multicpu%   %memory%   %swap%   %enp3s0%   Keys: <fc=#CEFFAC>%kbd%</fc>   <fc=#FFFFCC>%date%</fc>"
 }
