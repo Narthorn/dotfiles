@@ -10,14 +10,14 @@ alias sc='xrandr --output DVI-1 --auto --output DVI-0 --left-of DVI-1 --auto'
 alias suspend_dpms='xset -dpms; xset s off; (sleep 2h; xset s on; xset +dpms) &'
 alias wsteam='wine "C:\\Steam\\Steam.exe" -no-dwrite &!'
 
-work() { 
-	termdown -f roman $* && (
-		music_playing=$(mpc | grep '^\[playing\]')
-		[[ $music_playing ]] && mpc -q pause
-		xdg-open http://matmartinez.net/nsfw/ &>/dev/null & termdown -b -f roman 0 -t 'good job'
-		[[ $music_playing ]] && mpc -q play
-	)
+mute_music() {
+	music_playing=$(mpc | grep '^\[playing\]')
+	[[ $music_playing ]] && mpc -q pause
+	eval $*
+	[[ $music_playing ]] && mpc -q play
 }
+
+work() { termdown -f roman $* && mute_music "(xdg-open http://matmartinez.net/nsfw/ &>/dev/null & termdown -b -f roman 0 -t 'good job')" }
 
 source $ZSH/oh-my-zsh.sh
 
