@@ -4,7 +4,7 @@ ZSH=/usr/share/oh-my-zsh/
 DISABLE_AUTO_UPDATE="true"
 #COMPLETION_WAITING_DOTS="true"
 
-plugins=(git zsh-syntax-highlighting archlinux colored-man)
+plugins=(git zsh-syntax-highlighting archlinux colored-man-pages)
 
 alias sc='xrandr --output DVI-1 --auto --output DVI-0 --left-of DVI-1 --auto'
 alias suspend_dpms='xset -dpms; xset s off; (sleep 2h; xset s on; xset +dpms) &'
@@ -30,4 +30,4 @@ typeset -g -A key
 bindkey '^[[7~' beginning-of-line
 bindkey '^[[8~' end-of-line
 
-#PS1="\n\[\e[34m\]# [\[\e[35m\]\t\[\e[34m\]] \[\e[36m\]\u\[\e[34m\]@\[\e[32m\]\h:\[\e[33m\]\w\[\e[34m\]\$\[\e[m\] "
+unset LESS # thanks, but no thanks
