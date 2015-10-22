@@ -23,25 +23,14 @@ export NO_AT_BRIDGE=1
 # Steam close to tray
 export STEAM_FRAME_FORCE_CLOSE=1
 
-# prettiness
-# xcompmgr &
-
 # Terminal
 export EDITOR=vim
 
 # System tray
-#trayer --edge top --align right --margin 1680 --widthtype pixels --width 120 --expand true --heighttype request --transparent true --tint 0x000000 --alpha 0 &
 trayer --edge top --align right --widthtype pixels --width 120 --expand true --heighttype pixels --height 16 --transparent true --tint 0x000000 --alpha 0 &
 
 # Backgrounds
 nitrogen --restore &
-
-# Sound !
-pulseaudio --start 
-
-#teamspeak3 &
-
-#pavucontrol &
 
 # haskell is good for you
 exec xmonad
