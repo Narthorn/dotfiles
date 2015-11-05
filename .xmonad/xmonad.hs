@@ -37,8 +37,8 @@ conf = defaultConfig {
     layoutHook         = avoidStruts $ smartBorders $ 
                          (spacing 8  $  Tall 1 (3/100) (1/2)
                                     ||| Mirror (Tall 1 (3/100) (1/2))) 
-                         ||| tabbed shrinkText tabConfig
-						 ||| noBorders Full,
+                                    ||| tabbed shrinkText tabConfig
+                                    ||| noBorders Full,
 
     keys               = \(XConfig {modMask = modMask}) -> M.fromList $
 
@@ -50,7 +50,7 @@ conf = defaultConfig {
                             , ((modMask,               xK_c), spawn "chromium")
                             , ((modMask,               xK_e), spawn "spacefm")
                             , ((modMask,               xK_p), spawn "pavucontrol")
-							, ((modMask .|. shiftMask, xK_p), spawn "pactl set-card-profile alsa_card.usb-Native_Instruments_RigKontrol3_SN-ydag0t9x-00 off; pactl set-card-profile alsa_card.usb-Native_Instruments_RigKontrol3_SN-ydag0t9x-00 output:analog-stereo")
+                            , ((modMask .|. shiftMask, xK_p), spawn "pactl set-card-profile alsa_card.usb-Native_Instruments_RigKontrol3_SN-ydag0t9x-00 off; pactl set-card-profile alsa_card.usb-Native_Instruments_RigKontrol3_SN-ydag0t9x-00 output:analog-stereo")
 
                             , ((modMask .|. mod1Mask,     xK_Print), screenshot 3 True)
                             , ((modMask .|. controlMask,  xK_Print), spawn "import png:- | xclip -selection clipboard") -- Copy screenshot to clipboard in select mode.
@@ -95,8 +95,8 @@ conf = defaultConfig {
                             , ((modMask, button2), (\w -> windows (W.sink w) >> windows W.shiftMaster)) -- Sink and switch with master window
                             , ((modMask, 8), killWindow)                          -- Kill window under cursor
                             , ((modMask, 9), windows . W.sink)                    -- Sink window under cursor
-							, ((modMask .|. shiftMask, button3), (\w -> windows (W.delete' w) >> reveal w)) -- Unmanage a window without losing stackset information
-							, ((modMask .|. shiftMask, button1), manage)          -- Manage an ignored window again
+                            , ((modMask .|. shiftMask, button3), (\w -> windows (W.delete' w) >> reveal w)) -- Unmanage a window without losing stackset information
+                            , ((modMask .|. shiftMask, button1), manage)          -- Manage an ignored window again
                             ],
 
     normalBorderColor  = myNormalBorderColor,
