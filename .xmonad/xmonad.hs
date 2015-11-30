@@ -101,7 +101,9 @@ conf = defaultConfig {
     focusedBorderColor = myFocusedBorderColor,
     borderWidth        = myBorderWidth,
 
-    handleEventHook    = handleEventHook defaultConfig <+> fullscreenEventHook <+> hintsEventHook,
+    startupHook        = ewmhDesktopsStartup <+> setFullscreenSupported,
+    handleEventHook    = ewmhDesktopsEventHook <+> fullscreenEventHook <+> hintsEventHook,
+    logHook            = ewmhDesktopsLogHook,
 
     manageHook         = manageDocks <+> composeAll manageRules
 
@@ -162,15 +164,26 @@ xmobarTitleColor            = "#FFB6B0" -- Color of current window title in xmob
 xmobarCurrentWorkspaceColor = "#CEFFAC" -- Color of current workspace in xmobar.
 
 ------------------------------------------------------------------------
+-- Set EWMH fullscreen capability
+setFullscreenSupported :: X ()
+setFullscreenSupported = do
+	d <- asks display
+	r <- asks theRoot
+	a <- getAtom "_NET_SUPPORTED"
+	c <- getAtom "ATOM"
+	supp <- getAtom "_NET_WM_STATE_FULLSCREEN"
+	io $ changeProperty32 d r a c propModeAppend [fromIntegral supp]
+
+------------------------------------------------------------------------
 -- Run xmonad.
 --
 main = do
   xmproc <- spawnPipe "/usr/bin/xmobar ~/.xmonad/xmobar.hs"
-  xmonad $ ewmh conf {
-      logHook = dynamicLogWithPP $ xmobarPP {
+  xmonad $ conf {
+      logHook = logHook conf <+> (dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc
           , ppTitle = xmobarColor xmobarTitleColor ""
           , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
           , ppSep = "   "
-          , ppLayout = const ""}
+          , ppLayout = const ""})
   }
