@@ -18,7 +18,7 @@ import qualified Data.Map as M
 import System.Exit
 
 import Data.List
-import Data.Monoid 
+import Data.Monoid
 import Data.Maybe
 import Data.Function
 import Control.Monad
@@ -34,17 +34,15 @@ conf = defaultConfig {
 
     terminal           = "urxvt",
 
-    layoutHook         = avoidStruts $ smartBorders $ 
-                         (spacing 8  $  Tall 1 (3/100) (1/2)
-                                    ||| Mirror (Tall 1 (3/100) (1/2))) 
-                                    ||| tabbed shrinkText tabConfig
-                                    ||| noBorders Full,
+    layoutHook         = smartBorders $ avoidStruts $     (spacing 8 $ Tall 1 (3/100) (1/2) ||| Mirror (Tall 1 (3/100) (1/2)))
+                                                      ||| tabbed shrinkText tabConfig
+                                                      ||| noBorders Full,
 
     keys               = \(XConfig {modMask = modMask}) -> M.fromList $
 
                             [ ((modMask,               xK_t), spawn $ XMonad.terminal conf)              -- Launch terminal.
                             , ((modMask,               xK_r), spawn "exec $(dmenu_path | dmenu)")        -- Launch something using dmenu.
-                            , ((modMask .|. shiftMask, xK_r), spawn "SUDO_ASKPASS=$HOME/dev/scripts/dpass exec sudo -A $(dmenu_path | dmenu)")        -- Launch somethins as root using dmenu.
+                            , ((modMask .|. shiftMask, xK_r), spawn "SUDO_ASKPASS=$HOME/dev/scripts/dpass exec sudo -A $(dmenu_path | dmenu)")        -- Launch something as root using dmenu.
                             , ((modMask,               xK_a), spawn "bt-audio -d Zik ; bt-audio -c Zik") -- Reconnect bluetooth headset.
                             , ((modMask,               xK_b), spawn "killall ts3client_linux_amd64; exec teamspeak3")
                             , ((modMask,               xK_c), spawn "chromium")
@@ -59,17 +57,17 @@ conf = defaultConfig {
 
                             , ((modMask .|. controlMask,              xK_Shift_L), spawn "bash -c 'if grep fr <(setxkbmap -query); then setxkbmap us; else setxkbmap fr; fi'")
 
-                            -- Audio 
+                            -- Audio
 
                             , ((0, 0x1008ff11), spawn "amixer -q set Master 10%-")    -- XF86AudioLowerVolume
                             , ((0, 0x1008ff12), spawn "amixer -q set Master toggle")  -- XF86AudioMute
-                            , ((0, 0x1008ff13), spawn "amixer -q set Master 10%+")    -- XF86AudioRaiseVolume 
-                            , ((0, 0x1008ff14), spawn "mpc toggle")                   -- XF86AudioPlay 
+                            , ((0, 0x1008ff13), spawn "amixer -q set Master 10%+")    -- XF86AudioRaiseVolume
+                            , ((0, 0x1008ff14), spawn "mpc toggle")                   -- XF86AudioPlay
                             , ((0, 0x1008ff15), spawn "mpc stop")                     -- XF86AudioStop
                             , ((0, 0x1008ff16), spawn "mpc prev")                     -- XF86AudioPrev
-                            , ((0, 0x1008ff17), spawn "mpc next")                     -- XF86AudioNext 
-                            , ((0, 0x1008ff31), spawn "mpc pause")                    -- XF86AudioPause 
-                            
+                            , ((0, 0x1008ff17), spawn "mpc next")                     -- XF86AudioNext
+                            , ((0, 0x1008ff31), spawn "mpc pause")                    -- XF86AudioPause
+
                             -- Xmonad
 
                             , ((modMask,               xK_q),         spawn "xmonad --recompile && xmonad --restart")  -- Restart xmonad
@@ -116,11 +114,11 @@ conf = defaultConfig {
 manageRules = concat $
     [ [     title =? t --> doCenterFloat | t <- titleFloats ]
     , [ className =? c --> doCenterFloat | c <- classFloats ]
-    , [ className =? c --> doShift w | (c,w) <- classShifts ] 
+    , [ className =? c --> doShift w | (c,w) <- classShifts ]
     , [     title =? t --> doShift w | (t,w) <- titleShifts ]
     , [   isFullscreen --> (doF W.focusDown <+> doFullFloat) ]
     ]
-    where 
+    where
       classFloats = ["Spacefm", "Qjackctl", "Thunderbird", "Xmessage", "Wine", "Thunar", "Transmission-qt", "Steam"]
       titleFloats = []
       classShifts = [("Gajim", "1"), ("Mumble", "1"), ("Ts3client_linux_amd64", "1")]
@@ -133,10 +131,10 @@ manageRules = concat $
 screenshotFile = "%Y-%m-%d_%Hh%Mm%Ss_$wx$h.png"
 
 screenshot :: MonadIO m => Int -> Bool -> m ()
-screenshot delay full = do 
+screenshot delay full = do
 	runProcessWithInput "/usr/bin/sleep" [ "0.1" ] ""
-	filename <- liftIO $ runProcessWithInput "/usr/bin/scrot" [ 
-		screenshotFile, 
+	filename <- liftIO $ runProcessWithInput "/usr/bin/scrot" [
+		screenshotFile,
 		(if full then "-m" else "-s"),
 		"-d", (show delay),
 		"-e", "echo $f & mv $f ~/stuff/screenshots" ] ""
