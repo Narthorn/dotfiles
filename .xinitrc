@@ -3,8 +3,8 @@
 # Configure X
 xrandr --output DVI-1  --mode 1920x1200 --primary
 xrandr --output DVI-0  --mode 1680x1050 --left-of DVI-1
-#xrandr --output HDMI-0 --mode 1680x1050 --rate 59.95 --right-of DVI-1 
-#xrandr --output DFP11  --mode 1920x1200
+#xrandr --output HDMI-0 --mode 1680x1050 --rate 59.95 --right-of DVI-1
+#xrandr --output DFP11  --mode 1920x1200 --primary
 #xrandr --output DFP10  --mode 1680x1050 --left-of DFP11
 xsetroot -cursor_name left_ptr &
 
