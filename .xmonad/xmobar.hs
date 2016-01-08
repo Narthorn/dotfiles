@@ -1,7 +1,7 @@
 -- This is setup for dual {1680x1050, 1920x1080} monitors, with the right monitor as primary
 -- and 120px space for trayer dock
 Config {
-    font = "xft:Fixed-8",
+    font = "xft:Fixed:pixelsize=11,IPAGothic:pixelsize=11",
     bgColor = "#000000",
     fgColor = "#ffffff",
     position = Static { xpos = 1680, ypos = 0, width = 1800, height = 16 },
