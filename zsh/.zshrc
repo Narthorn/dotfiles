@@ -16,6 +16,8 @@ fs() { sudo du -haxd3 -t500M $* | sort -h }
 ffcut() { ffmpeg -i $1 -ss $2 -to $3 -vf "subtitles='$1'" $4 }
 ffcut_nosub() { ffmpeg -i $1 -ss $2 -to $3 $4 }
 
+twitch() { ffmpeg -f x11grab -framerate 30 -s 1920x1200 -i ":0.0+1680,0" -f pulse -i default -s 1200x800 -c:v libx264 -g 30 -keyint_min 15 -b:v 3000k -minrate 3000k -maxrate 3000k -bufsize 3000k -pix_fmt yuv420p -preset ultrafast -tune zerolatency -c:a aac -strict -2 -f flv "rtmp://live.twitch.tv/app/$(<~/genesis/.twitch_key)" }
+
 mute_music() {
 	music_playing=$(mpc | grep '^\[playing\]')
 	[[ $music_playing ]] && mpc -q pause
