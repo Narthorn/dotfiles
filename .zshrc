@@ -11,6 +11,8 @@ alias suspend_dpms='xset -dpms; xset s off; (sleep 2h; xset s on; xset +dpms) &'
 alias wsteam='wine "C:\\Steam\\Steam.exe" -no-dwrite &!'
 alias tea='termdown -f roman -b 2m'
 
+fs() { sudo du -haxd3 -t500M $* | sort -h }
+
 mute_music() {
 	music_playing=$(mpc | grep '^\[playing\]')
 	[[ $music_playing ]] && mpc -q pause
