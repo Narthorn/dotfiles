@@ -13,6 +13,9 @@ alias tea='termdown -f roman -b 2m'
 
 fs() { sudo du -haxd3 -t500M $* | sort -h }
 
+ffcut() { ffmpeg -i $1 -ss $2 -to $3 -vf "subtitles='$1'" $4 }
+ffcut_nosub() { ffmpeg -i $1 -ss $2 -to $3 $4 }
+
 mute_music() {
 	music_playing=$(mpc | grep '^\[playing\]')
 	[[ $music_playing ]] && mpc -q pause
