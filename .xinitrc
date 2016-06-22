@@ -30,6 +30,12 @@ export EDITOR=vim
 
 export WINEDLLOVERRIDES=winemenubuilder.exe=d
 
+# Japanese input
+export GTK_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+export QT_IM_MODULE=fcitx
+fcitx &
+
 # System tray
 trayer --edge top --align right --widthtype pixels --width 120 --expand true --heighttype pixels --height 16 --transparent true --tint 0x000000 --alpha 0 &
 
