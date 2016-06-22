@@ -122,7 +122,7 @@ manageRules = concat $
     , [   isFullscreen --> (doF W.focusDown <+> doFullFloat) ]
     ]
     where
-      classFloats = ["Spacefm", "Qjackctl", "Thunderbird", "Xmessage", "Wine", "Thunar", "Transmission-qt", "Steam"]
+      classFloats = ["Spacefm", "Qjackctl", "Thunderbird", "Xmessage", "Thunar", "Transmission-qt", "Steam"]
       titleFloats = []
       classShifts = [("Gajim", "1"), ("Mumble", "1"), ("Ts3client_linux_amd64", "1")]
       titleShifts = [("irssi", "1")]
