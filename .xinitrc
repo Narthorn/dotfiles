@@ -28,6 +28,8 @@ export STEAM_FRAME_FORCE_CLOSE=1
 # Terminal
 export EDITOR=vim
 
+export WINEDLLOVERRIDES=winemenubuilder.exe=d
+
 # System tray
 trayer --edge top --align right --widthtype pixels --width 120 --expand true --heighttype pixels --height 16 --transparent true --tint 0x000000 --alpha 0 &
 
