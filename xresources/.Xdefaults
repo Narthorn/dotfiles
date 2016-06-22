@@ -29,7 +29,7 @@ URxvt*background : #323232
 URxvt*transparent : true
 URxvt*shading     : 20
 URxvt*fading      : 40
-URxvt*font        : xft:Terminus:pixelsize=12
+URxvt*font        : xft:Terminus:pixelsize=8,xft:IPAGothic
 
 URxvt*saveLines : 512
 
