@@ -10,6 +10,9 @@ xsetroot -cursor_name left_ptr &
 # set screensaver idle to 5 min
 xset s 300 &
 
+# Backgrounds
+nitrogen --restore &
+
 # temp RK3 fix
 xinput disable "RigKontrol3" &
 
@@ -27,9 +30,6 @@ export EDITOR=vim
 
 # System tray
 trayer --edge top --align right --widthtype pixels --width 120 --expand true --heighttype pixels --height 16 --transparent true --tint 0x000000 --alpha 0 &
-
-# Backgrounds
-nitrogen --restore &
 
 # haskell is good for you
 exec xmonad
