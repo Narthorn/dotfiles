@@ -11,6 +11,7 @@ import XMonad.Layout.LayoutHints
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Tabbed
 import XMonad.Layout.Spacing
+import XMonad.Layout.ThreeColumns
 import XMonad.Util.Run
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
@@ -34,7 +35,7 @@ conf = defaultConfig {
 
     terminal           = "urxvt",
 
-    layoutHook         = smartBorders $ avoidStruts $     (spacing 8 $ Tall 1 (3/100) (1/2) ||| Mirror (Tall 1 (3/100) (1/2)))
+    layoutHook         = smartBorders $ avoidStruts $     (spacing 6 $ Tall 1 (3/100) (1/2) ||| Mirror (Tall 1 (3/100) (1/2)) ||| ThreeColMid 1 (3/100) (1/3))
                                                       ||| tabbed shrinkText tabConfig
                                                       ||| noBorders Full,
 
