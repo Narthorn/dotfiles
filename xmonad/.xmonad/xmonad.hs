@@ -103,7 +103,7 @@ conf = defaultConfig {
     borderWidth        = myBorderWidth,
 
     startupHook        = ewmhDesktopsStartup <+> setFullscreenSupported,
-    handleEventHook    = ewmhDesktopsEventHook <+> fullscreenEventHook <+> hintsEventHook,
+    handleEventHook    = ewmhDesktopsEventHook <+> fullscreenEventHook <+> hintsEventHook <+> docksEventHook,
     logHook            = ewmhDesktopsLogHook,
 
     manageHook         = manageDocks <+> composeAll manageRules
