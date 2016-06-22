@@ -1,4 +1,4 @@
-se rnu ai ts=4 sw=4 pt=<F2>
+se rnu ai ts=4 sw=4 pt=<F2> mouse=a
 se vi='100,s10,h
 
 se wildmenu
