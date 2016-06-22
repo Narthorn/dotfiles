@@ -178,7 +178,7 @@ setFullscreenSupported = do
 ------------------------------------------------------------------------
 -- Run xmonad.
 --
-main = do
+main_xmobar = do
   xmproc <- spawnPipe "/usr/bin/xmobar ~/.xmonad/xmobar.hs"
   xmonad $ conf {
       logHook = logHook conf <+> (dynamicLogWithPP $ xmobarPP {
@@ -188,3 +188,13 @@ main = do
           , ppSep = "   "
           , ppLayout = const ""})
   }
+
+main_bare = xmonad $ conf
+	{ logHook = return ()
+	, startupHook = return ()
+	, handleEventHook = \_ -> return (All True)
+	, manageHook = composeAll []
+	, layoutHook = Tall 1 (3/100) (1/2)
+	}
+
+main = main_xmobar
