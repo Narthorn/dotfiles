@@ -130,7 +130,7 @@ sub cmd_color {
     }
   } elsif ($op eq "preview") {
     Irssi::print ("\nAvailable colors:");
-    foreach my $i (2..14) {
+    foreach my $i (1..20) {
       Irssi::print (chr (3) . "$i" . "Color #$i");
     }
   }
@@ -138,7 +138,7 @@ sub cmd_color {
 
 load_colors;
 
-Irssi::settings_add_str('misc', 'nickcolor_colors', '2 3 4 5 6 7 9 10 11 12 13');
+Irssi::settings_add_str('misc', 'nickcolor_colors', '2 3 5 6 7 10');
 Irssi::command_bind('color', 'cmd_color');
 
 Irssi::signal_add('message public', 'sig_public');
