@@ -1,37 +1,13 @@
-## SERVERS
+# Base: http://git.z3bra.org/cgit.cgi/dotfiles/
+# still not done cleaning up
+
 servers = (
-  # {{{
-  { address = "irc.quakenet.org"; chatnet = "qnet"; port = "6667"; },
   {
     address = "irc.freenode.net";
     chatnet = "fnode";
     port = "6697";
     use_ssl = "yes";
-  },
-  { address = "irc.epiknet.org"; chatnet = "epik"; port = "6667"; },
-  {
-    address = "irc.nixers.net";
-    chatnet = "nixers";
-    port = "6697";
-    use_ssl = "yes";
-  },
-  {
-    address = "irc.blinkenshell.org";
-    chatnet = "blink";
-    port = "6697";
-    use_ssl = "yes";
-  },
-  {
-    address = "irc.iotek.org";
-    chatnet = "iotek";
-    port = "6697";
-    use_ssl = "yes";
-  },
-  {
-    address = "irc.oftc.net";
-    chatnet = "oftc";
-    port = "6697";
-    use_ssl = "yes";
+    autoconnect = "yes";
   },
   {
     address = "irc.stormbit.net";
@@ -41,60 +17,33 @@ servers = (
     autoconnect = "yes";
   }
 );
-# }}}
 
-## COMMANDS
 chatnets = {
-  # {{{
-  fnode = { type = "IRC"; nick = "Narthorn"; };
-  blink = { type = "IRC"; };
-  qnet = { type = "IRC"; nick = "Narthorn"; };
-  nixers = { type = "IRC"; nick = "Narthorn"; };
-  iotek = { type = "IRC"; };
-  epik = { type = "IRC"; };
-  oftc = { type = "IRC"; };
-  pomf = { type = "IRC"; nick = "Narthorn"; };
+  fnode = {
+    type = "IRC";
+    nick = "Narthorn";
+  };
+  pomf = {
+    type = "IRC";
+    nick = "Narthorn";
+  };
 };
-# }}}
 
-## CHANNELS
 channels = (
-  # {{{
-  #  { name = "#cute"; chatnet = "pomf"; autojoin = "Yes"; },
-  { name = "#thorn"; chatnet = "pomf"; autojoin = "Yes"; },
-  { name = "#stagesECL"; chatnet = "fnode"; autojoin = "Yes"; }
+  { name = "#curseforge"; chatnet = "fnode"; autojoin = "Yes"; },
+  { name = "#wildstaruidev"; chatnet = "fnode"; autojoin = "Yes"; },
+  #{ name = "#cute"; chatnet = "pomf"; autojoin = "Yes"; },
+  { name = "#thorn"; chatnet = "pomf"; autojoin = "Yes"; }
 );
-# }}}
 
-## ALIASES
 aliases = {
-  # {{{
-  J = "join";
   WJOIN = "join -window";
   WQUERY = "query -window";
-  P = "part";
-  DESCRIBE = "action";
-  DATE = "time";
   HOST = "userhost";
   LAST = "lastlog";
   SAY = "msg *";
-  WI = "whois";
-  WII = "whois $0 $0";
-  WW = "whowas";
-  W = "window";
-  N = "names";
-  M = "msg";
-  T = "topic";
-  C = "clear";
-  K = "kick";
-  KB = "kickban";
-  KN = "knockout";
   BANS = "ban";
-  B = "ban";
   MUB = "unban *";
-  UB = "unban";
-  IG = "ignore";
-  UNIG = "unignore";
   SB = "scrollback";
   SH = "exec -";
   UMODE = "mode $N";
@@ -113,19 +62,12 @@ aliases = {
   CALC = "exec - if which bc &>/dev/null\\; then echo '$*' | bc | awk '{print \"$*=\"$$1}'\\; else echo bc was not found\\; fi";
   SBAR = "STATUSBAR";
   INVITELIST = "mode $C +I";
-  Q = "QUIT";
-  QU = "QUERY";
-  UQ = "UNQUERY";
   HL = "lastlog -hilight -new";
   OP = "msg ChanServ OP $C";
   DEOP = "msg ChanServ DEOP $C";
-  CHEZWAM = "say http://chezmoicamarche.com";
 };
-# }}}
 
-## STATUSBAR
 statusbar = {
-  # {{{
   # formats:
   # when using {templates}, the template is shown only if it's argument isn't
   # empty unless no argument is given. for example {sb} is printed always,
@@ -292,6 +234,7 @@ settings = {
     #timestamp_timeout = "900";
     completion_char = ",";
   };
+
   "perl/core/scripts" = {
     awl_display_key = "%K$H $C $S";
     awl_display_key_active = "$H %Y$C $S";
@@ -302,14 +245,8 @@ settings = {
     nicklist_automode = "";
   };
 };
-# }}}
 
-## HILIGHTS
-hilights = (
-  # {{{
-  { text = "Narthorn"; nick = "yes"; word = "no"; }
-);
-# }}}
+hilights = ( { text = "Narthorn"; nick = "yes"; word = "no"; } );
 
 logs = { };
 ignores = ( );
