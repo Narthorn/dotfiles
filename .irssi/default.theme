@@ -281,7 +281,7 @@ formats = {
   # }}}
   "fe-common/irc" = {
     # {{{
-    chanmode_change = "%K            %y> %K│{channick $1}";
+    chanmode_change = "%K           %y> %K│{channick $1}";
     server_chanmode_change = "%K           %y◢ %K: %n {channick $1}";
 
     whois = "%K             %K├── %nWHOIS $0 %K──╼";
