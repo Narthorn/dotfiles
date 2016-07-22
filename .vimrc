@@ -9,3 +9,6 @@ inoremap <Left>  <NOP>
 inoremap <Right> <NOP>
 inoremap <Up>    <NOP>
 inoremap <Down>  <NOP>
+
+"urxvt translates Application key to this
+noremap [29~ <NOP>
