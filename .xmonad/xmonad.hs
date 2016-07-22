@@ -36,7 +36,6 @@ conf = defaultConfig {
     terminal           = "urxvt",
 
     layoutHook         = smartBorders $ avoidStruts $     (spacing 6 $ Tall 1 (3/100) (1/2) ||| Mirror (Tall 1 (3/100) (1/2)) ||| ThreeColMid 1 (3/100) (1/3))
-                                                      ||| tabbed shrinkText tabConfig
                                                       ||| noBorders Full,
 
     keys               = \(XConfig {modMask = modMask}) -> M.fromList $
