@@ -13,9 +13,6 @@ xset s 300 &
 # Backgrounds
 nitrogen --restore &
 
-# temp RK3 fix
-xinput disable "RigKontrol3" &
-
 # Set GTK env var for Qt
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
