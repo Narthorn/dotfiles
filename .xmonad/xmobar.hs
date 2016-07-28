@@ -5,7 +5,7 @@ Config {
     bgColor = "#000000",
     fgColor = "#ffffff",
     position = Static { xpos = 1680, ypos = 0, width = 1800, height = 16 },
-	lowerOnStart = True,
+    lowerOnStart = True,
     commands = [
         Run AutoMPD          ["-t","<fc=#FFFFCC><statei></fc> <state>: <fc=#CEFFAC><artist> - <title> (<length>)</fc>"],
         Run MPD              ["-t","<fc=#FFFFCC><bar></fc> [<flags>]", "-W", "25", "-b", "-", "-f", "#"] 10, -- AutoMPD won't wake up to update progres bar, so use regular 1s polling
@@ -15,8 +15,8 @@ Config {
         Run Network "enp3s0" ["-t","Net: <rx>, <tx>",                                 "-m","4", "-L","10",   "-H","1000", "-h","#FFB6B0","-l","#CEFFAC","-n","#FFFFCC"] 10,
 
         Run Date "%A %_d %B %H:%M" "date" 10,
-		Run Kbd [("us", "qw"), ("fr", "az")],
-		Run Com "sh" ["-c", "sensors radeon-pci-0500 | sed '/temp/!d;s/  (.*//;s/.*+//'"] "gputemp" 10,
+        Run Kbd [("us", "qw"), ("fr", "az")],
+        Run Com "sh" ["-c", "sensors radeon-pci-0500 | sed '/temp/!d;s/  (.*//;s/.*+//'"] "gputemp" 10,
 
 
         Run StdinReader
