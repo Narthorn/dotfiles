@@ -45,7 +45,7 @@ conf = defaultConfig {
                             , ((modMask .|. shiftMask, xK_r), spawn "SUDO_ASKPASS=$HOME/dev/scripts/dpass exec sudo -A $(dmenu_path | dmenu)")        -- Launch something as root using dmenu.
                             , ((modMask,               xK_a), spawn "bt-audio -d Zik ; bt-audio -c Zik") -- Reconnect bluetooth headset.
                             , ((modMask .|. shiftMask, xK_t), spawn "killall ts3client_linux_amd64; exec teamspeak3")
-                            , ((modMask,               xK_c), spawn "chromium --top-chrome-md=non-material")
+                            , ((modMask,               xK_c), spawn "chromium")
                             , ((modMask,               xK_e), spawn "spacefm")
                             , ((modMask,               xK_p), spawn "pavucontrol")
                             , ((modMask .|. shiftMask, xK_p), spawn "pactl set-card-profile alsa_card.usb-Native_Instruments_RigKontrol3_SN-ydag0t9x-00 off; pactl set-card-profile alsa_card.usb-Native_Instruments_RigKontrol3_SN-ydag0t9x-00 output:analog-stereo")
