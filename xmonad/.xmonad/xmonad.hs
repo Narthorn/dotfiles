@@ -38,6 +38,8 @@ conf = defaultConfig {
     layoutHook         = smartBorders $ avoidStruts $     (spacing 6 $ Tall 1 (3/100) (1/2) ||| Mirror (Tall 1 (3/100) (1/2)) ||| ThreeColMid 1 (3/100) (1/3))
                                                       ||| noBorders Full,
 
+	workspaces         = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+
     keys               = \(XConfig {modMask = modMask}) -> M.fromList $
 
                             [ ((modMask,               xK_t), spawn $ XMonad.terminal conf)              -- Launch terminal.
@@ -82,8 +84,8 @@ conf = defaultConfig {
                             ] ++ [ -- Default keybinding fixes for Azerty keyboard layout
 
                               ((m .|. modMask, k), windows $ f i)
-                                     | (i, k) <- zip (XMonad.workspaces conf) [0x26,0xe9,0x22,0x27,0x28,0x2d,0xe8,0x5f,0xe7,0xe0] -- mod-[1..9], Switch to workspace N
-                                     , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]                                        -- mod-shift-[1..9], Move client to workspace N
+                                     | (i, k) <- zip (XMonad.workspaces conf) [0xb2, 0x26,0xe9,0x22,0x27,0x28,0x2d,0xe8,0x5f,0xe7,0xe0] -- mod-[²,1..9,0], Switch to workspace N
+                                     , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]                                              -- mod-shift-[&,1..9,0], Move client to workspace N
                             ],
 
     mouseBindings      = \(XConfig {modMask = modMask}) -> M.fromList $
