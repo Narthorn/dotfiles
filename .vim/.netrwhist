@@ -1,4 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/home/narthorn/.bup/index-cache/None__home_narthorn_genesis_To_Sort_Games_Wildstar_bup'
-let g:netrw_dirhist_2='/home/narthorn/dev/ouroboros'
