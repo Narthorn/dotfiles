@@ -47,4 +47,4 @@ typeset -g -A key
 bindkey '^[[7~' beginning-of-line
 bindkey '^[[8~' end-of-line
 
-unset LESS # thanks, but no thanks
+export LESS="-RFX"
