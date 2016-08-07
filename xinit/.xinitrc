@@ -36,5 +36,8 @@ fcitx &
 # System tray
 trayer --edge top --align right --widthtype pixels --width 120 --expand true --heighttype pixels --height 16 --transparent true --tint 0x000000 --alpha 0 &
 
+# Mails
+thunderbird &
+
 # haskell is good for you
 exec xmonad
