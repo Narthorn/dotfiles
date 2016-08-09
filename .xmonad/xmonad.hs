@@ -8,6 +8,8 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Layout.LayoutHints
+import XMonad.Layout.Gaps
+import XMonad.Layout.PerScreen
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Tabbed
 import XMonad.Layout.Spacing
@@ -35,8 +37,9 @@ conf = defaultConfig {
 
     terminal           = "urxvt",
 
-    layoutHook         = smartBorders $ avoidStruts $     (spacing 6 $ Tall 1 (3/100) (1/2) ||| Mirror (Tall 1 (3/100) (1/2)) ||| ThreeColMid 1 (3/100) (1/3))
-                                                      ||| noBorders Full,
+    layoutHook         = let layouts = (spacing 6 $ Tall 1 (3/100) (1/2) ||| Mirror (Tall 1 (3/100) (1/2)) ||| ThreeColMid 1 (3/100) (1/3))
+                                      ||| noBorders Full
+                         in smartBorders $ ifWider 1680 (gaps [(U,16)] layouts) layouts,
 
 
     workspaces         = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
@@ -75,7 +78,7 @@ conf = defaultConfig {
 
                             , ((modMask,               xK_q),         spawn "xmonad --recompile && xmonad --restart")  -- Restart xmonad
                             , ((modMask .|. shiftMask, xK_q),         io (exitWith ExitSuccess))                       -- Quit xmonad
-                            , ((modMask .|. shiftMask, xK_b),         sendMessage ToggleStruts)                        -- Toggle dock gaps (struts)
+                            , ((modMask .|. shiftMask, xK_b),         sendMessage ToggleGaps)                          -- Toggle dock gaps (struts)
                             , ((modMask,               xK_n),         refresh)                         -- Reset windows to proper sizes
                             , ((modMask,               xK_space),     sendMessage NextLayout)          -- Rotate through available layouts
                             , ((modMask,               xK_Tab),       windows W.focusDown)             -- Move focus to the next window
