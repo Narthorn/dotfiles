@@ -38,7 +38,8 @@ conf = defaultConfig {
     layoutHook         = smartBorders $ avoidStruts $     (spacing 6 $ Tall 1 (3/100) (1/2) ||| Mirror (Tall 1 (3/100) (1/2)) ||| ThreeColMid 1 (3/100) (1/3))
                                                       ||| noBorders Full,
 
-	workspaces         = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+
+    workspaces         = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
 
     keys               = \(XConfig {modMask = modMask}) -> M.fromList $
 
@@ -136,13 +137,13 @@ screenshotFile = "%Y-%m-%d_%Hh%Mm%Ss_$wx$h.png"
 
 screenshot :: MonadIO m => Int -> Bool -> m ()
 screenshot delay full = do
-	runProcessWithInput "/usr/bin/sleep" [ "0.1" ] ""
-	filename <- liftIO $ runProcessWithInput "/usr/bin/scrot" [
-		screenshotFile,
-		(if full then "-m" else "-s"),
-		"-d", (show delay),
-		"-e", "echo $f & mv $f ~/stuff/screenshots" ] ""
-	when (not $ null filename) $ safeSpawn "chromium" ["http://www.narthorn.com/stuff/screenshots/" ++ filename]
+    runProcessWithInput "/usr/bin/sleep" [ "0.1" ] ""
+    filename <- liftIO $ runProcessWithInput "/usr/bin/scrot" [
+        screenshotFile,
+        (if full then "-m" else "-s"),
+        "-d", (show delay),
+        "-e", "echo $f & mv $f ~/stuff/screenshots" ] ""
+    when (not $ null filename) $ safeSpawn "chromium" ["http://www.narthorn.com/stuff/screenshots/" ++ filename]
 
 ------------------------------------------------------------------------
 -- Colors and borders
@@ -169,12 +170,12 @@ xmobarCurrentWorkspaceColor = "#CEFFAC" -- Color of current workspace in xmobar.
 -- Set EWMH fullscreen capability
 setFullscreenSupported :: X ()
 setFullscreenSupported = do
-	d <- asks display
-	r <- asks theRoot
-	a <- getAtom "_NET_SUPPORTED"
-	c <- getAtom "ATOM"
-	supp <- getAtom "_NET_WM_STATE_FULLSCREEN"
-	io $ changeProperty32 d r a c propModeAppend [fromIntegral supp]
+    d <- asks display
+    r <- asks theRoot
+    a <- getAtom "_NET_SUPPORTED"
+    c <- getAtom "ATOM"
+    supp <- getAtom "_NET_WM_STATE_FULLSCREEN"
+    io $ changeProperty32 d r a c propModeAppend [fromIntegral supp]
 
 ------------------------------------------------------------------------
 -- Run xmonad.
@@ -191,11 +192,11 @@ main_xmobar = do
   }
 
 main_bare = xmonad $ conf
-	{ logHook = return ()
-	, startupHook = return ()
-	, handleEventHook = \_ -> return (All True)
-	, manageHook = composeAll []
-	, layoutHook = Tall 1 (3/100) (1/2)
-	}
+    { logHook = return ()
+    , startupHook = return ()
+    , handleEventHook = \_ -> return (All True)
+    , manageHook = composeAll []
+    , layoutHook = Tall 1 (3/100) (1/2)
+    }
 
 main = main_xmobar
