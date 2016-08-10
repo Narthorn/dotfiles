@@ -31,6 +31,11 @@ mute_music() {
 
 work() { termdown -f roman $* && mute_music "(xdg-open http://matmartinez.net/nsfw/ &>/dev/null & termdown -b -f roman 0 -t 'good job')" }
 
+fix_perms() {
+	find $* -type f -exec chmod 644 {} \;
+	find $* -type d -exec chmod 755 {} \;
+}
+
 rvm_init() {
 	export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 	[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
