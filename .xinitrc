@@ -44,5 +44,8 @@ amixer -c 0 sset Master Capture 256 &
 amixer -c 0 sset Mic Playback 0 &
 amixer -c 0 sset PCM Capture 0 &
 
+# Piano foot pedals mappings
+~/dev/mid2key/mid2key /dev/midi* ~/dev/mid2key/test &
+
 # haskell is good for you
 exec xmonad
