@@ -39,5 +39,10 @@ trayer --edge top --align right --widthtype pixels --width 120 --expand true --h
 # Mails
 thunderbird &
 
+# Weird soundblaster XFi config to avoid crosstalk
+amixer -c 0 sset Master Capture 256 &
+amixer -c 0 sset Mic Playback 0 &
+amixer -c 0 sset PCM Capture 0 &
+
 # haskell is good for you
 exec xmonad
