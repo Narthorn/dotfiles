@@ -10,3 +10,5 @@
 	autosquash = true
 [merge]
 	ff = only
+[commit]
+	gpgsign = true
