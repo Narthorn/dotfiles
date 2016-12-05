@@ -133,17 +133,10 @@ manageRules = concat $
 -- Screenshots
 --
 
-screenshotFile = "%Y-%m-%d_%Hh%Mm%Ss_$wx$h.png"
-
 screenshot :: MonadIO m => Int -> Bool -> m ()
 screenshot delay full = do
-    runProcessWithInput "/usr/bin/sleep" [ "0.1" ] ""
-    filename <- liftIO $ runProcessWithInput "/usr/bin/scrot" [
-        screenshotFile,
-        (if full then "-m" else "-s"),
-        "-d", (show delay),
-        "-e", "echo $f & mv $f ~/stuff/screenshots" ] ""
-    when (not $ null filename) $ safeSpawn "chromium" ["http://www.narthorn.com/stuff/screenshots/" ++ filename]
+     runProcessWithInput "/usr/bin/sleep" [ "0.1" ] ""
+     safeSpawn "/home/narthorn/dev/scripts/screen.sh" [if full then "" else "-s", "-d", show delay]
 
 ------------------------------------------------------------------------
 -- Colors and borders
