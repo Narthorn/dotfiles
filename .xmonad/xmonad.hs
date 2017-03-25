@@ -50,7 +50,7 @@ conf = defaultConfig {
                             , ((modMask .|. shiftMask, xK_a), spawn "pactl unload-module module-loopback") -- Disable microphone loopback
                             , ((modMask .|. shiftMask, xK_t), spawn "killall ts3client_linux_amd64; exec teamspeak3")
                             , ((modMask,               xK_c), spawn "chromium")
-                            , ((modMask,               xK_e), spawn "spacefm")
+                            , ((modMask,               xK_e), spawn "pcmanfm")
                             , ((modMask,               xK_p), spawn "pavucontrol")
                             , ((modMask .|. shiftMask, xK_p), spawn "pactl set-card-profile alsa_card.usb-Native_Instruments_RigKontrol3_SN-ydag0t9x-00 off; pactl set-card-profile alsa_card.usb-Native_Instruments_RigKontrol3_SN-ydag0t9x-00 output:analog-stereo")
 
@@ -125,7 +125,7 @@ manageRules = concat $
     , [   isFullscreen --> (doF W.focusDown <+> doFullFloat) ]
     ]
     where
-      classFloats = ["Spacefm", "Qjackctl", "Thunderbird", "Xmessage", "Thunar", "Transmission-qt", "Steam"]
+      classFloats = ["Pcmanfm", "Qjackctl", "Thunderbird", "Xmessage", "Thunar", "Transmission-qt", "Steam"]
       titleFloats = []
       classShifts = [("Gajim", "1"), ("Mumble", "1"), ("Ts3client_linux_amd64", "1")]
       titleShifts = [("irssi", "1")]
