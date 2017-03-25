@@ -53,6 +53,8 @@ conf = defaultConfig {
                             , ((modMask,               xK_e), spawn "pcmanfm")
                             , ((modMask,               xK_p), spawn "pavucontrol")
                             , ((modMask .|. shiftMask, xK_p), spawn "pactl set-card-profile alsa_card.usb-Native_Instruments_RigKontrol3_SN-ydag0t9x-00 off; pactl set-card-profile alsa_card.usb-Native_Instruments_RigKontrol3_SN-ydag0t9x-00 output:analog-stereo")
+                            , ((modMask,               xK_m), spawn "killall mid2key; exec fluidsynth -si -r 44100 -c 1 -z 1280 -g 3 -a pulseaudio /usr/share/soundfonts/FluidR3_GM.sf2 & (sleep 1; aconnect 20 128)") -- use piano as synth
+                            , ((modMask .|. shiftMask, xK_m), spawn "killall fluidsynth; exec dev/mid2key/mid2key /dev/midi* ~/dev/mid2key/test") -- use piano as keybinds
 
                             , ((modMask .|. mod1Mask,     xK_Print), screenshot 3 True)
                             , ((modMask .|. controlMask,  xK_Print), spawn "import png:- | xclip -selection clipboard") -- Copy screenshot to clipboard in select mode.
