@@ -10,7 +10,11 @@ alias sc='xrandr --output DVI-D-1 --auto --output DVI-I-1 --left-of DVI-D-1 --au
 alias suspend_dpms='xset -dpms; xset s off; (sleep 2h; xset s on; xset +dpms) &'
 alias wsteam='wine "C:\\Steam\\Steam.exe" -no-dwrite &!'
 alias tea='termdown -f roman -b 2m'
-alias pw='stty -echo ; python -c "import sys,scrypt; sys.stdout.buffer.write(scrypt.hash(sys.stdin.readline(),\"\",buflen=12))" | base64 | xclip'
+
+pw() {
+	stty -echo
+	python -c "import sys,scrypt; sys.stdout.buffer.write(scrypt.hash(sys.stdin.readline(),\"\",buflen=$1))" | base64 | tr -d "\n" | xclip
+}
 
 fs() { sudo du -haxd3 -t500M $* | sort -h }
 
