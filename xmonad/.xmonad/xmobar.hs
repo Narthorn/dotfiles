@@ -15,7 +15,7 @@ Config {
         Run Swap             ["-t","Swap: <usedratio>%",                                        "-L","512",  "-H","1024", "-h","#FFB6B0","-l","#CEFFAC","-n","#FFFFCC"] 10,
         Run Network "enp3s0" ["-t","Net: <rx>, <tx>",                                 "-m","4", "-L","10",   "-H","1000", "-h","#FFB6B0","-l","#CEFFAC","-n","#FFFFCC"] 10,
 
-        Run Date "%A %_d %B %H:%M" "date" 10,
+        Run Date "%A %_d %B %Y  %H:%M" "date" 10,
         Run Kbd [("us", "qw"), ("fr", "az")],
         Run Com "sh" ["-c", "sensors amdgpu-pci-0500 | sed '/temp/!d;s/  (.*//;s/.*+//'"] "gputemp" 10,
 
@@ -24,5 +24,5 @@ Config {
     ],
     sepChar = "%",
     alignSep = "}{",
-    template = "%StdinReader% }{ %autompd% %mpd%       Gpu: <fc=#CEFFAC>%gputemp%</fc>  %multicpu%   %memory%   %swap%   %enp3s0%   Keys: <fc=#CEFFAC>%kbd%</fc>   <fc=#FFFFCC>%date%</fc>"
+    template = "%StdinReader% }{ %autompd% %mpd%       Gpu: <fc=#CEFFAC>%gputemp%</fc>    %multicpu%    %memory%    %swap%    %enp3s0%    Keys: <fc=#CEFFAC>%kbd%</fc>    <fc=#FFFFCC>%date%</fc>"
 }
