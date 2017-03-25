@@ -17,7 +17,7 @@ Config {
 
         Run Date "%A %_d %B %H:%M" "date" 10,
         Run Kbd [("us", "qw"), ("fr", "az")],
-        Run Com "sh" ["-c", "sensors radeon-pci-0500 | sed '/temp/!d;s/  (.*//;s/.*+//'"] "gputemp" 10,
+        Run Com "sh" ["-c", "sensors amdgpu-pci-0500 | sed '/temp/!d;s/  (.*//;s/.*+//'"] "gputemp" 10,
 
 
         Run StdinReader
