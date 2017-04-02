@@ -139,7 +139,7 @@ manageRules = concat $
 screenshot :: MonadIO m => Int -> Bool -> m ()
 screenshot delay full = do
      runProcessWithInput "/usr/bin/sleep" [ "0.1" ] ""
-     safeSpawn "/home/narthorn/dev/scripts/screen.sh" [if full then "" else "-s", "-d", show delay]
+     safeSpawn "/home/narthorn/dev/scripts/screen.sh" [if full then "" else "-s", "-u", "-d", show delay]
 
 ------------------------------------------------------------------------
 -- Colors and borders
