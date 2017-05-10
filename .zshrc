@@ -10,6 +10,7 @@ alias sc='xrandr --output DVI-D-1 --auto --output DVI-I-1 --left-of DVI-D-1 --au
 alias suspend_dpms='xset -dpms; xset s off; (sleep 2h; xset s on; xset +dpms) &'
 alias wsteam='wine "C:\\Steam\\Steam.exe" -no-dwrite &!'
 alias tea='termdown -f roman -b 2m'
+alias woops='mv stuff/screenshots/20*.png .;mount stuff;mv 20*.png stuff/screenshots/'
 
 pw() {
 	stty -echo
