@@ -57,7 +57,7 @@ conf = defaultConfig {
                             , ((modMask .|. shiftMask, xK_m), spawn "killall fluidsynth; exec dev/mid2key/mid2key /dev/midi* ~/dev/mid2key/test") -- use piano as keybinds
 
                             , ((modMask .|. mod1Mask,     xK_Print), screenshot 3 True)
-                            , ((modMask .|. controlMask,  xK_Print), spawn "import png:- | xclip -selection clipboard") -- Copy screenshot to clipboard in select mode.
+                            , ((modMask .|. controlMask,  xK_Print), spawn "import png:- | xclip -selection clipboard -t image/png") -- Copy screenshot to clipboard in select mode.
                             , ((modMask,                  xK_Print), screenshot 0 False)       -- Upload a screenshot in select mode.
                             , ((modMask .|. shiftMask,    xK_Print), screenshot 0 True)        -- Upload full screenshot in multi-head mode.
 
