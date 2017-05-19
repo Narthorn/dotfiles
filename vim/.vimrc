@@ -16,3 +16,6 @@ noremap [29~ <NOP>
 "move ugly swap files
 set backupdir=~/.cache/vim,/tmp
 set directory=~/.cache/vim,/tmp
+
+filetype plugin on
+se path+=**
