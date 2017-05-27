@@ -19,6 +19,26 @@ function msg.info(message)
 	mp.msg.info(message)
 end
 
+--- Util
+
+function os.exists(path) return os.rename(path,path) end
+
+function dmenu_prompt(prompt)
+
+	dmenu_command = "dmenu -p '" .. prompt .. "' <&-"
+
+	local handle = io.popen(dmenu_command)
+	local input = handle:read()
+	local success,_,eno = handle:close()
+
+	if not success then
+		msg.warn("Returned " .. eno .. " when executing \"" .. dmenu_command .. "\" !")
+		return
+	end
+
+	return input
+end
+
 --- Hotkey
 
 function catch_frame()
@@ -48,17 +68,13 @@ end
 -- Filename, from user input
 
 function get_filename()
+	local filename
+	repeat
 
-	dmenu_command = "dmenu -p 'Filename: ' <&-"
+		filename = dmenu_prompt('Filename: ')
+		if not filename or filename == "" then return end
 
-	local handle = io.popen(dmenu_command)
-	local filename = handle:read()
-	local success,_,eno = handle:close()
-
-	if not success then
-		msg.warn("Returned " .. eno .. " when executing \"" .. dmenu_command .. "\" !")
-		return
-	end
+	until not os.exists(options.outdir .. "/" .. filename) or dmenu_prompt('Overwrite? (y/N) ') == 'y'
 
 	return filename
 end
