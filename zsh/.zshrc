@@ -6,11 +6,22 @@ DISABLE_AUTO_UPDATE="true"
 
 plugins=(git zsh-syntax-highlighting archlinux colored-man-pages)
 
+source $ZSH/oh-my-zsh.sh
+
 alias sc='xrandr --output DVI-D-1 --auto --output DVI-I-1 --left-of DVI-D-1 --auto'
 alias suspend_dpms='xset -dpms; xset s off; (sleep 2h; xset s on; xset +dpms) &'
 alias wsteam='wine "C:\\Steam\\Steam.exe" -no-dwrite &!'
 alias tea='termdown -f roman -b 2m'
 alias woops='mv ~/stuff/screenshots/20*.png .;mount stuff;mv 20*.png ~/stuff/screenshots/'
+
+wp() { WINEPREFIX=~/games/wineprefixes/$1 ${@:2} }
+_wp() {
+	_arguments '1:wineprefix:{_files -W ~/games/wineprefixes/}' '*:r:->r'
+	if [[ -n "$state" ]]; then shift 2 words; ((CURRENT--)); ((CURRENT--)); _normal; fi
+}
+compdef _wp wp
+
+winetemp() { WINEPREFIX=$(mktemp -d /tmp/XXXXXXXXX.wine) wine $@ }
 
 pw() {
 	stty -echo
@@ -46,8 +57,6 @@ rvm_init() {
 	export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 	[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 }
-
-source $ZSH/oh-my-zsh.sh
 
 PROMPT=$'
 %{\e[1;34m%}┌─[%{\e[0;36m%}%n%{\e[0;34m%}@%{\e[0;32m%}%m%{\e[1;34m%}]───[%{\e[0;33m%}%D{%Y/%m/%d}, %*%{\e[1;34m%}]───[%{\e[1;37m%}%~%{\e[1;34m%}]%{\e[0m%} 
