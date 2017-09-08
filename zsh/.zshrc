@@ -1,16 +1,14 @@
-# Path to your oh-my-zsh configuration.
+# oh-my-zsh configuration
 ZSH=/usr/share/oh-my-zsh/
-
 DISABLE_AUTO_UPDATE="true"
-#COMPLETION_WAITING_DOTS="true"
-
 plugins=(git zsh-syntax-highlighting archlinux colored-man-pages)
-
 source $ZSH/oh-my-zsh.sh
 
+# Extending history size
 SAVEHIST=100000
 HISTSIZE=100000
 
+# Custom aliases and commands
 alias sc='xrandr --output DVI-D-1 --auto --output DVI-I-1 --left-of DVI-D-1 --auto'
 alias suspend_dpms='xset -dpms; xset s off; (sleep 2h; xset s on; xset +dpms) &'
 alias wsteam='wine "C:\\Steam\\Steam.exe" -no-dwrite &!'
