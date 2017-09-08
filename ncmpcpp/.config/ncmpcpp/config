@@ -1,3 +1,6 @@
+ncmpcpp_directory="~/.config/ncmpcpp"
+lyrics_directory="~/.local/share/lyrics"
+
 mpd_music_dir = "~/music"
 song_list_format = "{$3%4l$9 }{$7%a$9 - }{%t}|{$8%f$9}$R{$5%b }$9"
 song_columns_list_format = "(7)[green]{l} (20)[cyan]{a} (30)[]{t} (23)[red]{b}"
