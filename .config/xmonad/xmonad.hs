@@ -63,6 +63,9 @@ conf = defaultConfig {
 
                             , ((modMask .|. controlMask,              xK_Shift_L), spawn "bash -c 'if grep fr <(setxkbmap -query); then setxkbmap us; else setxkbmap fr; fi'")
 
+                            , ((modMask,               xK_x), spawn "sleep 0.2; xdotool click --repeat 100000000 --delay 5 1")
+                            , ((modMask .|. shiftMask, xK_x), spawn "killall xdotool")
+
                             -- Audio
 
                             , ((0, 0x1008ff11), spawn "amixer -q set Master 10%-")    -- XF86AudioLowerVolume
