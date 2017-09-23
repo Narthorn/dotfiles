@@ -49,5 +49,10 @@ nmap <C-l> yyp!!bash<CR>
 "save as root
 nmap ZR :w !sudo tee %<CR>
 
+"quicksave
+nmap <F2> :update<CR>
+vmap <F2> <Esc><F2>gv
+imap <F2> <c-o><F2>
+
 filetype plugin indent on
 se path+=**
