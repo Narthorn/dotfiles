@@ -35,7 +35,7 @@ export QT_IM_MODULE=fcitx
 fcitx &
 
 # System tray
-trayer --edge top --align right --margin 1680 --widthtype pixels --width 120 --expand true --heighttype pixels --height 16 --transparent true --tint 0x000000 --alpha 0 &
+trayer --edge top --align right --widthtype pixels --width 120 --expand true --heighttype pixels --height 16 --transparent true --tint 0x000000 --alpha 0 --monitor primary &
 
 # Mails
 thunderbird &
