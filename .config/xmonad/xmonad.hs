@@ -127,6 +127,7 @@ manageRules = concat $
     , [ className =? c --> doCenterFloat | c <- classFloats ]
     , [ className =? c --> doShift w | (c,w) <- classShifts ]
     , [     title =? t --> doShift w | (t,w) <- titleShifts ]
+    , [ className =? c --> doIgnore | c <- classIgnores]
     , [   isFullscreen --> (doF W.focusDown <+> doFullFloat) ]
     ]
     where
@@ -134,6 +135,7 @@ manageRules = concat $
       titleFloats = []
       classShifts = [("Gajim", "1"), ("Mumble", "1"), ("Ts3client_linux_amd64", "1")]
       titleShifts = [("irssi", "1")]
+      classIgnores = ["qt-ponies"]
 
 ------------------------------------------------------------------------
 -- Screenshots
