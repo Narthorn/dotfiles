@@ -31,8 +31,8 @@ pw() {
 
 fs() { sudo du -haxd3 -t500M $* | sort -h }
 
-ffcut() { ffmpeg -i $1 -ss $2 -to $3 -vf "subtitles='$1'" $4 }
-ffcut_nosub() { ffmpeg -i $1 -ss $2 -to $3 $4 }
+ffcut() { ffmpeg -i $1 -ss $2 -to $3 -vf "subtitles='$1'" ${@:4} }
+ffcut_nosub() { ffmpeg -i $1 -ss $2 -to $3 ${@:4} }
 
 twitch_update() { curl -H "Accept: application/vnd.twitchtv.v3+json" -H "Authorization: OAuth $(<~/genesis/keys/twitch/.twitch_api_token)" -d "channel[status]=$2&channel[game]=$1" -X PUT https://api.twitch.tv/kraken/channels/narthorn }
 twitch() {
