@@ -88,6 +88,8 @@ conf = defaultConfig {
                             , ((modMask,               xK_comma),     sendMessage (IncMasterN 1))      -- Increment the number of windows in the master area.
                             , ((modMask,               xK_semicolon), sendMessage (IncMasterN (-1)))   -- Decrement the number of windows in the master area.
 
+                            , ((modMask,               xK_Scroll_Lock), asks theRoot >>= setFocusX) -- Forcibly grab focus away from the current window
+
                             ] ++ [ -- Default keybinding fixes for Azerty keyboard layout
 
                               ((m .|. modMask, k), windows $ f i)
