@@ -248,12 +248,12 @@ function encode(enc)
     if string.len(vf) > 0 then
         vf = vf .. ","
     end
-    local sub_file_table = mp.get_property_native("options/sub-file")
+    local sub_file_table = mp.get_property_native("options/sub-file", {})
     local sub_file = ""
     for index, param in pairs(sub_file_table) do
         sub_file = sub_file .. " --sub-file='" .. string.gsub(tostring(param), "'", "'\\''") .. "'"
     end
-    local audio_file_table = mp.get_property_native("options/audio-file")
+    local audio_file_table = mp.get_property_native("options/audio-file", {})
     local audio_file = ""
     for index, param in pairs(audio_file_table) do
         audio_file = audio_file .. " --audio-file='" .. string.gsub(tostring(param), "'", "'\\''") .. "'"
