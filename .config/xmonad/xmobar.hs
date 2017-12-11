@@ -17,8 +17,8 @@ Config {
 
         Run Date "%A %_d %B %Y  %H:%M" "date" 10,
         Run Kbd [("us", "qw"), ("fr", "az")],
-        Run Com "sh" ["-c", "sensors amdgpu-pci-0b00 | sed '/temp/!d;s/  (.*//;s/.*+//'"] "gputemp" 10,
-		Run Com "sh" ["-c", "sensors it8686-isa-0a40 | sed '/AMDSI/!d;s/ (.*//;s/.*+//'"] "cputemp" 10,
+        Run Com "sh" ["-c", "sensors amdgpu-pci-0b00  | sed '/temp/!d;s/  (.*//;s/.*+//'"] "gputemp" 10,
+        Run Com "sh" ["-c", "sensors k10temp-pci-00c3 | sed '/temp1/!d;s/ (.*//;s/.*+//'"] "cputemp" 10,
 
 
         Run StdinReader
