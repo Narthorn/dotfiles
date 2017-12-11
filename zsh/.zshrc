@@ -9,7 +9,7 @@ SAVEHIST=100000
 HISTSIZE=100000
 
 # Custom aliases and commands
-alias sc='xrandr --output DVI-D-1 --auto --output DVI-I-1 --left-of DVI-D-1 --auto'
+alias sc='xrandr --output DP-1 --primary --auto --output DP-2 --right-of DP-1 --auto --output HDMI-1 --left-of DP-1 --auto'
 alias suspend_dpms='xset -dpms; xset s off; (sleep 2h; xset s on; xset +dpms) &'
 alias wsteam='wine "C:\\Steam\\Steam.exe" -no-dwrite &!'
 alias tea='termdown -f roman -b 2m'
