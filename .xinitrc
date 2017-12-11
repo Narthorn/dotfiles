@@ -1,11 +1,10 @@
 #!/bin/sh
 
 # Configure X
-xrandr --output DVI-I-1 --primary
-#xrandr --output DVI-D-1 --right-of DVI-I-1
-#xrandr --output HDMI-1 --left-of DVI-I-1
-#xrandr --output DFP11  --mode 1920x1200 --primary
-#xrandr --output DFP10  --mode 1680x1050 --left-of DFP11
+xrandr --output DP-1 --primary
+xrandr --output DP-2 --right-of DP-1
+xrandr --output HDMI-1 --left-of DP-1
+
 xsetroot -cursor_name left_ptr &
 
 # set screensaver idle to 5 min
