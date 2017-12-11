@@ -49,8 +49,11 @@ class BigReqEnable(rq.ReplyRequest):
         rq.Pad(2),
         )
 
+verbose = False
+
 def log(msg, *args):
-    sys.stderr.write(msg.format(*args) + '\n')
+    if verbose:
+        sys.stderr.write(msg.format(*args) + '\n')
 
 def error(msg, *args):
     log(msg, *args)
