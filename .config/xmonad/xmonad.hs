@@ -29,7 +29,7 @@ import qualified Data.Foldable as F
 -- General
 --
 
-conf = defaultConfig {
+conf = docks defaultConfig {
 
     modMask            = mod4Mask,
 
@@ -113,10 +113,10 @@ conf = defaultConfig {
     borderWidth        = myBorderWidth,
 
     startupHook        = ewmhDesktopsStartup <+> setEWMHSupported "_NET_WM_STATE_FULLSCREEN",
-    handleEventHook    = ewmhDesktopsEventHook <+> fullscreenEventHook <+> hintsEventHook <+> docksEventHook,
+    handleEventHook    = ewmhDesktopsEventHook <+> fullscreenEventHook <+> hintsEventHook,
     logHook            = ewmhDesktopsLogHook,
 
-    manageHook         = manageDocks <+> composeAll manageRules
+    manageHook         = composeAll manageRules
 
 }
 
