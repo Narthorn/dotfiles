@@ -112,7 +112,7 @@ conf = defaultConfig {
     focusedBorderColor = myFocusedBorderColor,
     borderWidth        = myBorderWidth,
 
-    startupHook        = ewmhDesktopsStartup <+> setFullscreenSupported,
+    startupHook        = ewmhDesktopsStartup <+> setEWMHSupported "_NET_WM_STATE_FULLSCREEN",
     handleEventHook    = ewmhDesktopsEventHook <+> fullscreenEventHook <+> hintsEventHook <+> docksEventHook,
     logHook            = ewmhDesktopsLogHook,
 
@@ -170,15 +170,26 @@ xmobarTitleColor            = "#FFB6B0" -- Color of current window title in xmob
 xmobarCurrentWorkspaceColor = "#CEFFAC" -- Color of current workspace in xmobar.
 
 ------------------------------------------------------------------------
--- Set EWMH fullscreen capability
-setFullscreenSupported :: X ()
-setFullscreenSupported = do
+-- Set EWMH capability
+setEWMHSupported :: String -> X ()
+setEWMHSupported prop = do
     d <- asks display
     r <- asks theRoot
     a <- getAtom "_NET_SUPPORTED"
     c <- getAtom "ATOM"
-    supp <- getAtom "_NET_WM_STATE_FULLSCREEN"
+    supp <- getAtom prop
     io $ changeProperty32 d r a c propModeAppend [fromIntegral supp]
+
+unsetEWMHSupported :: String -> X ()
+unsetEWMHSupported prop = do
+    d <- asks display
+    r <- asks theRoot
+    a <- getAtom "_NET_SUPPORTED"
+    c <- getAtom "ATOM"
+    supp <- getAtom prop
+    proplist <- io $ getWindowProperty32 d a r
+    let filtered_proplist = [ x | x <- fromMaybe [] proplist, x /= fromIntegral supp]
+    io $ changeProperty32 d r a c propModeReplace filtered_proplist
 
 ------------------------------------------------------------------------
 -- Run xmonad.
