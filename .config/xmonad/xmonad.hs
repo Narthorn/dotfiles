@@ -193,6 +193,30 @@ unsetEWMHSupported prop = do
     io $ changeProperty32 d r a c propModeReplace filtered_proplist
 
 ------------------------------------------------------------------------
+-- ignore configure and ewmh focus requests for misbehaving windows
+--
+customEventHook :: Query Bool -> (Event -> X All) -> Event -> X All
+customEventHook q hook e = do
+    match <- runQuery q (ev_window e)
+    if match
+        then do
+            case e of
+                PropertyEvent {} -> return (All False)
+                ConfigureRequestEvent {} -> return (All False)
+                ClientMessageEvent {ev_message_type = mt} -> do
+                    Just mt_name <- withDisplay $ \dpy -> io (getAtomName dpy mt)
+                    trace ("xmonad eventHook trace: " ++ eventName e ++ " (" ++ mt_name ++ ")")
+                    a_aw <- getAtom "_NET_ACTIVE_WINDOW"
+                    if mt == a_aw
+                        then return (All False)
+                        else hook e
+                _ -> do
+                    --trace ("xmonad eventHook trace: " ++ eventName e)
+                    hook e
+        else do
+            hook e
+
+------------------------------------------------------------------------
 -- Run xmonad.
 --
 main_xmobar = do
