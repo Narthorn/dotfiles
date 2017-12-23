@@ -127,15 +127,15 @@ conf = docks defaultConfig {
 manageRules = concat $
     [ [     title =? t --> doCenterFloat | t <- titleFloats ]
     , [ className =? c --> doCenterFloat | c <- classFloats ]
-    , [ className =? c --> doShift w | (c,w) <- classShifts ]
     , [     title =? t --> doShift w | (t,w) <- titleShifts ]
+    , [ className =? c --> doShift w | (c,w) <- classShifts ]
     , [ className =? c --> doIgnore | c <- classIgnores]
     , [   isFullscreen --> (doF W.focusDown <+> doFullFloat) ]
     ]
     where
       classFloats = ["Pcmanfm", "Qjackctl", "Thunderbird", "Xmessage", "Thunar", "Transmission-qt", "Steam"]
       titleFloats = []
-      classShifts = [("Gajim", "1"), ("Mumble", "1"), ("Ts3client_linux_amd64", "1")]
+      classShifts = [("discord", "0")]
       titleShifts = [("irssi", "1")]
       classIgnores = ["qt-ponies"]
 
@@ -171,6 +171,7 @@ xmobarCurrentWorkspaceColor = "#CEFFAC" -- Color of current workspace in xmobar.
 
 ------------------------------------------------------------------------
 -- Set EWMH capability
+--
 setEWMHSupported :: String -> X ()
 setEWMHSupported prop = do
     d <- asks display
@@ -187,8 +188,8 @@ unsetEWMHSupported prop = do
     a <- getAtom "_NET_SUPPORTED"
     c <- getAtom "ATOM"
     supp <- getAtom prop
-    proplist <- io $ getWindowProperty32 d a r
-    let filtered_proplist = [ x | x <- fromMaybe [] proplist, x /= fromIntegral supp]
+    Just proplist <- io $ getWindowProperty32 d a r
+    let filtered_proplist = [ x | x <- proplist, x /= fromIntegral supp]
     io $ changeProperty32 d r a c propModeReplace filtered_proplist
 
 ------------------------------------------------------------------------
@@ -214,3 +215,5 @@ main_bare = xmonad $ conf
     }
 
 main = main_xmobar
+
+-- vim: et
