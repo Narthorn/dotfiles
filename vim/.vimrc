@@ -1,6 +1,6 @@
 se number relativenumber
 se smartindent
-se tabstop=4 shiftwidth=4
+se tabstop=4 shiftwidth=4 expandtab
 se pastetoggle=<F2>
 se mouse=a
 se ttymouse=urxvt
