@@ -56,3 +56,37 @@ imap <F2> <c-o><F2>
 
 filetype plugin indent on
 se path+=**
+
+"smallfolds
+function! NextNonBlankLine(lnum)
+    let current = a:lnum + 1
+    while current <= line('$')
+        if getline(current) =~? '\v\S'
+            return current
+        endif
+        let current += 1
+    endwhile
+    return -2
+endfunction
+function! IndentLevel(lnum)
+    return indent(a:lnum) / &shiftwidth
+endfunction
+function! SmallFoldExpr(lnum)
+   let icur  = IndentLevel(a:lnum)
+   let inext = IndentLevel(NextNonBlankLine(a:lnum))
+    if getline(a:lnum) =~? '\v^\s*$'
+        return '='
+    endif
+   if inext == icur
+       return icur
+   elseif inext > icur
+       return '>'.inext
+   elseif inext < icur
+       return icur
+   endif
+endfunction
+function! SmallFoldText()
+    let section = getline(v:foldstart)
+    let firstline = getline(v:foldstart+1)
+    return v:folddashes . ' ' . section . ' ' . substitute(firstline, '^\s\+', '', '') . ' '
+endfunction
