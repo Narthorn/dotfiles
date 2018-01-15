@@ -132,8 +132,8 @@ manageRules = concat $
     ]
     where
       match n = foldl1 (<||>) $ map (=? n) [title, className, appName]
-      wFloats = ["Pcmanfm", "Qjackctl", "Thunderbird", "Xmessage", "Thunar", "Transmission-qt", "Steam"]
-      wShifts = [("discord", "0"), ("irssi", "1")]
+      wFloats = ["Pcmanfm", "Qjackctl", "Thunderbird", "Xmessage", "Transmission-qt", "Steam", "Anki"]
+      wShifts = [("discord", "0")]
       wIgnores = ["qt-ponies"]
 
 ------------------------------------------------------------------------
