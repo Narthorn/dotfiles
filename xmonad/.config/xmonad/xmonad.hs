@@ -125,19 +125,16 @@ conf = docks defaultConfig {
 --
 
 manageRules = concat $
-    [ [     title =? t --> doCenterFloat | t <- titleFloats ]
-    , [ className =? c --> doCenterFloat | c <- classFloats ]
-    , [     title =? t --> doShift w | (t,w) <- titleShifts ]
-    , [ className =? c --> doShift w | (c,w) <- classShifts ]
-    , [ className =? c --> doIgnore | c <- classIgnores]
-    , [   isFullscreen --> (doF W.focusDown <+> doFullFloat) ]
+    [ [      match n --> doCenterFloat |     n <- wFloats ]
+    , [      match n --> doShift w     | (n,w) <- wShifts ]
+    , [      match n --> doIgnore      |     n <- wIgnores ]
+    , [ isFullscreen --> (doF W.focusDown <+> doFullFloat) ]
     ]
     where
-      classFloats = ["Pcmanfm", "Qjackctl", "Thunderbird", "Xmessage", "Thunar", "Transmission-qt", "Steam"]
-      titleFloats = []
-      classShifts = [("discord", "0")]
-      titleShifts = [("irssi", "1")]
-      classIgnores = ["qt-ponies"]
+      match n = foldl1 (<||>) $ map (=? n) [title, className, appName]
+      wFloats = ["Pcmanfm", "Qjackctl", "Thunderbird", "Xmessage", "Thunar", "Transmission-qt", "Steam"]
+      wShifts = [("discord", "0"), ("irssi", "1")]
+      wIgnores = ["qt-ponies"]
 
 ------------------------------------------------------------------------
 -- Screenshots
