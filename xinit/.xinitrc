@@ -1,9 +1,9 @@
 #!/bin/sh
 
 # Configure X
-xrandr --output DP-1 --primary
-xrandr --output DP-2 --right-of DP-1
-xrandr --output HDMI-1 --left-of DP-1
+xrandr --output DP-1 --left-of DP-2
+xrandr --output DP-2 --primary
+xrandr --output DP-3 --right-of DP-2
 
 xsetroot -cursor_name left_ptr &
 
