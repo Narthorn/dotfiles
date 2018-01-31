@@ -23,6 +23,9 @@ noremap [29~ <NOP>
 set backupdir=~/.cache/vim,/tmp
 set directory=~/.cache/vim,/tmp
 
+"move ugly viminfo
+set viminfo+=n~/.vim/viminfo
+
 "Vundle
 filetype off
 se rtp+=~/.vim/bundle/Vundle.vim
