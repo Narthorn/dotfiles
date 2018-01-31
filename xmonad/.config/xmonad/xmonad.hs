@@ -43,7 +43,8 @@ conf = docks defaultConfig {
 
     keys               = \(XConfig {modMask = modMask}) -> M.fromList $
 
-                            [ ((modMask,               xK_t), spawn $ XMonad.terminal conf)              -- Launch terminal.
+                            [ ((modMask,               xK_t), spawn $ terminal conf)                           -- Launch terminal.
+                            , ((modMask,               xK_g), spawn $ (terminal conf) ++ " -name urxvt_float") -- Launch floating terminal.
                             , ((modMask,               xK_r), spawn "exec $(dmenu_path | dmenu)")        -- Launch something using dmenu.
                             , ((modMask .|. shiftMask, xK_r), spawn "SUDO_ASKPASS=$HOME/dev/scripts/dpass exec sudo -A $(dmenu_path | dmenu)")        -- Launch something as root using dmenu.
                             , ((modMask,               xK_a), spawn "pactl load-module module-loopback latency_msec=20") -- Microphone loopback
@@ -132,7 +133,7 @@ manageRules = concat $
     ]
     where
       match n = foldl1 (<||>) $ map (=? n) [title, className, appName]
-      wFloats = ["Pcmanfm", "Qjackctl", "Thunderbird", "Xmessage", "Transmission-qt", "Steam", "Anki"]
+      wFloats = ["Pcmanfm", "Qjackctl", "Thunderbird", "Xmessage", "Transmission-qt", "Steam", "Anki", "urxvt_float"]
       wShifts = [("discord", "0")]
       wIgnores = ["qt-ponies"]
 
