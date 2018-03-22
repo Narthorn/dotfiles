@@ -35,8 +35,10 @@ conf = docks defaultConfig {
 
     terminal           = "urxvt",
 
-    layoutHook         = smartBorders $ avoidStruts $     (spacing 6 $ Tall 1 (3/100) (1/2) ||| Mirror (Tall 1 (3/100) (1/2)) ||| ThreeColMid 1 (3/100) (1/3))
-                                                      ||| noBorders Full,
+    layoutHook         = smartBorders $ avoidStruts $ (    spacing 6 $            (Tall 1 (3/100) (1/2))
+                                                                       ||| Mirror (Tall 1 (3/100) (1/2))
+                                                                       ||| ThreeColMid 1 (3/100) (1/3))
+                                                       ||| noBorders Full,
 
 
     workspaces         = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
@@ -49,7 +51,6 @@ conf = docks defaultConfig {
                             , ((modMask .|. shiftMask, xK_r), spawn "SUDO_ASKPASS=$HOME/dev/scripts/dpass exec sudo -A $(dmenu_path | dmenu)")        -- Launch something as root using dmenu.
                             , ((modMask,               xK_a), spawn "pactl load-module module-loopback latency_msec=20") -- Microphone loopback
                             , ((modMask .|. shiftMask, xK_a), spawn "pactl unload-module module-loopback") -- Disable microphone loopback
-                            , ((modMask .|. shiftMask, xK_t), spawn "killall ts3client_linux_amd64; exec teamspeak3")
                             , ((modMask,               xK_c), spawn "chromium")
                             , ((modMask,               xK_e), spawn "pcmanfm")
                             , ((modMask,               xK_p), spawn "pavucontrol")
