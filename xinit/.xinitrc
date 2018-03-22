@@ -22,9 +22,11 @@ export NO_AT_BRIDGE=1
 # Steam close to tray
 export STEAM_FRAME_FORCE_CLOSE=1
 
-# Terminal
+# Editor
 export EDITOR=vim
 
+# housekeeping
+export CCACHE_DIR="$HOME/.cache/ccache"
 export WINEDLLOVERRIDES=winemenubuilder.exe=d
 
 # Japanese input
