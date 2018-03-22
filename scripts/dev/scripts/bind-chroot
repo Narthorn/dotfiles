@@ -1,0 +1,16 @@
+#!/usr/bin/zsh
+
+#set -x 
+
+[[ -n "$1" ]] || { echo "Error: No chroot target specified.";             exit 1; }
+[[ -d "$1" ]] || { echo "Error: '$1' doesn't exist or isn't a directory"; exit 1; }
+
+binds=(proc sys dev dev/pts run tmp)
+chroot_buildup()  { mounts=(); for fs in $binds; do sudo mount --bind /$fs $1/$fs && mounts=("$1/$fs" "${mounts[@]}"); done; }
+chroot_teardown() { sudo umount "${mounts[@]}"; unset mounts; }
+
+trap 'chroot_teardown; trap INT; kill -INT $$' INT
+
+chroot_buildup $1
+sudo chroot $1 sudo -u $USER ${@:2}
+chroot_teardown
