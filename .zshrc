@@ -15,6 +15,24 @@ alias wsteam='wine "C:\\Steam\\Steam.exe" -no-dwrite &!'
 alias tea='termdown -f roman -b 2m'
 alias woops='mv ~/stuff/screenshots/20*.png .;mount stuff;mv 20*.png ~/stuff/screenshots/'
 
+snaps() {
+    sudo -v || return $?;
+
+    btrfs_unlock() { sudo btrfs property set $1 ro false }
+    btrfs_lock()   { sudo btrfs property set $1 ro true }
+
+    for s in /mnt/btrfs/snapshots/*; do
+        trap 'btrfs_lock $s; trap INT; kill -INT $$' INT
+        echo -n "\e[0;33m$s\e[0m: "
+        btrfs_unlock $s
+        ~/dev/scripts/bind-chroot $s $@
+        btrfs_lock $s
+    done
+
+    echo -n "\e[0;33mrootfs\e[0m: "
+    $@
+}
+
 wp() { WINEPREFIX=~/games/wineprefixes/$1 ${@:2} }
 _wp() {
 	_arguments '1:wineprefix:{_files -W ~/games/wineprefixes/}' '*:r:->r'
