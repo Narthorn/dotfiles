@@ -58,12 +58,22 @@ conf = docks defaultConfig {
                             , ((modMask,               xK_m), spawn "killall mid2key; exec fluidsynth -si -r 44100 -c 1 -z 1280 -g 3 -a pulseaudio /usr/share/soundfonts/FluidR3_GM.sf2 & (sleep 1; aconnect RigKontrol3 128)") -- use piano as synth
                             , ((modMask .|. shiftMask, xK_m), spawn "killall fluidsynth; exec dev/mid2key/mid2key /dev/midi* ~/dev/mid2key/test") -- use piano as keybinds
 
+                            -- Screenshots
+
                             , ((modMask .|. mod1Mask,     xK_Print), screenshot 3 True)
-                            , ((modMask .|. controlMask,  xK_Print), spawn "xclip -sel c </dev/null; bash -c 'maim -su | ~/dev/scripts/pyclip CLIPBOARD text/html <(echo \"<img src=\\\"$(date +%s).png\\\"/>\") image/png'") -- Copy timestamped screenshot to clipboard in select mode.
+                            , ((modMask .|. controlMask,  xK_Print), spawn "xclip -sel c </dev/null; bash -c 'maim -su | ~/dev/scripts/pyclip CLIPBOARD text/html <(echo -n \"<img src=\\\"http://localhost/$(date +%s).png\\\"/>\") image/png'") -- Copy timestamped screenshot to clipboard in select mode.
                             , ((modMask,                  xK_Print), screenshot 0 False)       -- Upload a screenshot in select mode.
                             , ((modMask .|. shiftMask,    xK_Print), screenshot 0 True)        -- Upload full screenshot in multi-head mode.
 
-                            , ((modMask .|. controlMask,              xK_Shift_L), spawn "bash -c 'if grep fr <(setxkbmap -query); then setxkbmap us; else setxkbmap fr; fi'")
+                            -- Screensaving
+
+                            , ((modMask,                  xK_Pause), spawn "xset dpms force standby")
+
+                            -- Key layout
+
+                            , ((modMask .|. controlMask,  xK_Shift_L), spawn "bash -c 'if grep fr <(setxkbmap -query); then setxkbmap us; else setxkbmap fr; fi'")
+
+                            -- Autoclicker
 
                             , ((modMask,               xK_x), spawn "sleep 0.2; xdotool click --repeat 100000000 --delay 5 1")
                             , ((modMask .|. shiftMask, xK_x), spawn "killall xdotool")
