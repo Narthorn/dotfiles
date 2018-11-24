@@ -78,6 +78,11 @@ conf = docks defaultConfig {
                             , ((modMask,               xK_x), spawn "sleep 0.2; xdotool click --repeat 100000000 --delay 5 1")
                             , ((modMask .|. shiftMask, xK_x), spawn "killall xdotool")
 
+                            -- Switch internet connection (requires /usr/bin/ip permission in sudoers)
+
+                            , ((modMask,               xK_KP_Insert), spawn "sudo ip route change default via 192.168.0.1")
+                            , ((modMask,               xK_KP_End),    spawn "sudo ip route change default via 192.168.0.129")
+
                             -- Audio
 
                             , ((0, 0x1008ff11), spawn "amixer -q set Master 10%-")    -- XF86AudioLowerVolume
