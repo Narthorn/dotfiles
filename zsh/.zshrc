@@ -87,3 +87,7 @@ bindkey '^[[7~' beginning-of-line
 bindkey '^[[8~' end-of-line
 
 export LESS="-RFX"
+
+ain()  { sudo -E sh -c "sudo -Eu narthorn aur sync -- $*; pacman -S $*" }
+aupg() { sudo -E sh -c "sudo -Eu narthorn aur sync -u $*; pacman -Syu" }
+export AUR_PAGER="ranger"
