@@ -14,11 +14,11 @@ Config {
         Run DiskU            [("/", "/ <free>")] ["-L","20","-H","80","-h","#CEFFAC","-l","#FFB6B0","-n","#FFFFCC","-S","true"] 10,
         Run Memory           ["-t","<usedratio>%",                                         "-L","4096", "-H","8192", "-h","#FFB6B0","-l","#CEFFAC","-n","#FFFFCC"] 10,
         Run Swap             ["-t","<usedratio>%",                                        "-L","512",  "-H","1024", "-h","#FFB6B0","-l","#CEFFAC","-n","#FFFFCC"] 10,
-        Run Network "enp3s0" ["-t","Net: <rx>, <tx>",                                 "-m","4", "-L","10",   "-H","1000", "-h","#FFB6B0","-l","#CEFFAC","-n","#FFFFCC"] 10,
+        Run Network "enp4s0" ["-t","Net: <rx>, <tx>",                                 "-m","4", "-L","10",   "-H","1000", "-h","#FFB6B0","-l","#CEFFAC","-n","#FFFFCC"] 10,
 
         Run Date "%A %_d %B %Y  %H:%M" "date" 10,
         Run Kbd [("us", "qw"), ("fr", "az")],
-        Run Com "sh" ["-c", "sensors amdgpu-pci-0800  | sed '/temp/!d;s/  (.*//;s/.*+//'"] "gputemp" 10,
+        Run Com "sh" ["-c", "sensors amdgpu-pci-0900  | sed '/temp/!d;s/  (.*//;s/.*+//'"] "gputemp" 10,
         Run Com "sh" ["-c", "sensors k10temp-pci-00c3 | sed '/Tdie/!d;s/ (.*//;s/.*+//'"] "cputemp" 10,
 
 
@@ -26,7 +26,7 @@ Config {
     ],
     sepChar = "%",
     alignSep = "}{",
-    template = "%StdinReader% }{ %autompd% %mpd%       Gpu: <fc=#CEFFAC>%gputemp%</fc>    Cpu: <fc=#CEFFAC>%cputemp%</fc> %multicpu%  %disku%    Mem: %memory% (%swap%)    %enp3s0%    Keys: <fc=#CEFFAC>%kbd%</fc>    <fc=#FFFFCC>%date%</fc>"
+    template = "%StdinReader% }{ %autompd% %mpd%       Gpu: <fc=#CEFFAC>%gputemp%</fc>    Cpu: <fc=#CEFFAC>%cputemp%</fc> %multicpu%  %disku%    Mem: %memory% (%swap%)    %enp4s0%    Keys: <fc=#CEFFAC>%kbd%</fc>    <fc=#FFFFCC>%date%</fc>"
 }
 
 -- cpu meter ideas
