@@ -82,11 +82,6 @@ PROMPT=$'
 %{\e[1;34m%}┌─[%{\e[0;36m%}%n%{\e[0;34m%}@%{\e[0;32m%}%m%{\e[1;34m%}]───[%{\e[0;33m%}%D{%Y/%m/%d}, %*%{\e[1;34m%}]───[%{\e[1;37m%}%~%{\e[1;34m%}]%{\e[0m%} 
 %{\e[1;34m%}└─[%{\e[1;35m%}$%{\e[1;34m%}]%{\e[0m%} '
 
-typeset -g -A key
-
-bindkey '^[[7~' beginning-of-line
-bindkey '^[[8~' end-of-line
-
 export LESS="-RFX"
 
 ain()  { sudo -E sh -c "sudo -Eu narthorn aur sync -- $*; pacman -S $*" }
