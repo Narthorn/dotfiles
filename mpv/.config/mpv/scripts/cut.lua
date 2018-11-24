@@ -5,7 +5,7 @@
 
 options = {
 	outdir = "/home/narthorn/stuff/animu",
-	opts = "--oautofps",
+	opts = "",
 	aftercut = function(file) return "chromium http://www.narthorn.com/stuff/animu/" .. file end,
 }
 
